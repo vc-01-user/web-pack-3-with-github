@@ -1,16 +1,11 @@
-import "./styles/index.scss";
+// ########### ReactDOM.render is no longer supported in React 18 ###########
+// import { render } from "react-dom";
+// import App from "./components/App";
+// render(<App />, document.getElementById("root"));
 
-const elvenShieldRecipe = {
-  leatherStrips: 2,
-  ironIngot: 1,
-  refinedMoonstore: 4,
-};
-
-const elvenGountletsRecipe = {
-  elvenShieldRecipe,
-  leather: 1,
-  refinedMoonstore: 4,
-};
-
-console.log(elvenShieldRecipe);
-console.log(elvenGountletsRecipe);
+// ########### following code supported in React 18 ###########
+import App from "./components/App";
+import { createRoot } from "react-dom/client";
+const container = document.getElementById("root");
+const root = createRoot(container);
+root.render(<App />);
