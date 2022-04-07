@@ -27,3 +27,29 @@ button {
     display: inline-block;
     font-size: 16px;
 }
+
+.images {
+    margin-bottom: 20px;
+}
+
+// ul {
+//     list-style-image: url("../images/sass-logo.svg");
+// }
+
+ul {
+    list-style-type: none;
+
+}
+  
+ul li:before {
+    content: '';
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    background-size: 20px;
+    background-image: url("../images/sass-logo.svg");
+    background-repeat: no-repeat;
+    margin-right: 10px;
+    margin-bottom: -5px;
+}
+  

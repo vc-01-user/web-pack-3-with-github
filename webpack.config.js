@@ -1,5 +1,7 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 let mode = "development";
 let target = "web";
 
@@ -22,13 +24,35 @@ module.exports = {
   // mode: "development",
   mode: mode,
   target: target,
+
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    // filename: "[name].bundle.[contenthash].js",
+    assetModuleFilename: "images/[name][ext]",
+    // clean: true,
+  },
+
   module: {
     rules: [
+      {
+        test: /\.(png|ico|jpe?g|webp|gif|svg)$/i,
+        // type: "asset/resource",
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 30 * 1024,
+          },
+        },
+      },
+
       {
         // test: /\.s?css$/i,
         test: /\.(s[ac]|c)ss$/i,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: { publicPath: "" },
+          },
           "css-loader",
           "postcss-loader",
           "sass-loader",
@@ -48,7 +72,11 @@ module.exports = {
     ],
   },
 
-  plugins: [new MiniCssExtractPlugin()],
+  plugins: [
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin(),
+  ],
 
   resolve: {
     extensions: [".js", ".jsx"],
