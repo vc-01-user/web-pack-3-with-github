@@ -12,7 +12,7 @@ const App = () => {
         <section className="hero"></section>
         <main>
             <section>
-                <h1>Oh Hai, React</h1>
+                <h1>Oh Hai, Ract</h1>
             </section>
             <img src={testimage} alt="testimage" className="images" width="250" />
             <img src={sassLogoSvg} alt="sassLogoSvg" className="images" width="250" />
