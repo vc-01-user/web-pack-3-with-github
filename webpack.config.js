@@ -40,7 +40,7 @@ module.exports = {
         type: "asset",
         parser: {
           dataUrlCondition: {
-            maxSize: 30 * 1024,
+            maxSize: 10 * 1024,
           },
         },
       },
@@ -75,7 +75,10 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: "./src/template.html",
+    }),
+    // new HtmlWebpackPlugin(),
   ],
 
   resolve: {
